@@ -6,7 +6,9 @@ var GAP = 10;
 var TEXT_HEIGHT = 20;
 var BAR_WIDTH = 40;
 var BETWEEN_BAR = 50;
-var barHeight = CLOUD_HEIGHT - GAP - (TEXT_HEIGHT + GAP) * 3;
+var barHeight = CLOUD_HEIGHT - GAP - (TEXT_HEIGHT + GAP) * 4;
+var OFFSET_X = CLOUD_X + GAP * 2;
+var OFFSET_Y = CLOUD_Y + GAP;
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -25,24 +27,36 @@ var getMaxElement = function(arr) {
   return maxElement;
 };
 
+function getRandomColor() {
+  color = '#000080';
+  var color = '#' + Math.random().toString(16).slice(3, 9);
+
+  return color;
+
+};
+
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono'
-  ctx.fillText('Ура вы победили!', CLOUD_X + GAP * 2, CLOUD_Y + GAP + TEXT_HEIGHT);
-  ctx.fillText('Список результатов:', CLOUD_X + GAP * 2, CLOUD_Y + GAP + TEXT_HEIGHT * 2);
+  ctx.fillText('Ура вы победили!', OFFSET_X, OFFSET_Y + TEXT_HEIGHT);
+  ctx.fillText('Список результатов:', OFFSET_X, OFFSET_Y + TEXT_HEIGHT * 2);
 
   var players = ['Вы', 'Кекс', 'Катя', 'Игорь'];
 
   var maxTime = getMaxElement(times);
 
-  for (var i = 0; i < players.length; i++)
-  {
+  for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
     ctx.fillText(players[i], CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BETWEEN_BAR) * i, CLOUD_HEIGHT - GAP);
+    ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BETWEEN_BAR) * i, CLOUD_HEIGHT - GAP * 2 - TEXT_HEIGHT - barHeight * times[i] / maxTime);
+
     ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    ctx.fillRect(CLOUD_X + BAR_WIDTH, CLOUD_HEIGHT - GAP - TEXT_HEIGHT - barHeight * times[i] / maxTime, BAR_WIDTH, barHeight * times[i] / maxTime);
+
+    ctx.fillStyle = getRandomColor();
     ctx.fillRect(CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BETWEEN_BAR) * i, CLOUD_HEIGHT - GAP - TEXT_HEIGHT - barHeight * times[i] / maxTime, BAR_WIDTH, barHeight * times[i] / maxTime);
 
   };
