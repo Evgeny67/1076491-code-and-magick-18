@@ -30,13 +30,13 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-function MathRandom() {
+function getRandom() {
 
   return Math.round(Math.random() * 255);
 };
 
 function getRandomColor() {
-  var color = 'rgba(0, 0, ' + MathRandom()+ ', 1)';
+  var color = 'rgba(0, 0, ' + getRandom()+ ', 1)';
 
   return color;
 };
