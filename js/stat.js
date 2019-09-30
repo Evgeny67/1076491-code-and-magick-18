@@ -31,13 +31,14 @@ var getMaxElement = function (arr) {
 };
 
 function getRandom(min, max) {
-  var min = 0;
-  var max = 100;
+
   return Math.round(Math.random() * (max - min) + min);
 }
 
 function getRandomColor() {
-  var color = 'hsl(240,' + getRandom() + '%,25%)';
+  var min = 0;
+  var max = 100;
+  var color = 'hsl(240,' + getRandom(min, max) + '%,25%)';
 
   return color;
 }
