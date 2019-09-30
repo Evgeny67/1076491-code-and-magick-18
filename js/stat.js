@@ -24,22 +24,23 @@ var getMaxElement = function (arr) {
 
     if (item > maxElement) {
       maxElement = item;
-    };
+    }
   });
 
   return maxElement;
 };
 
-function getRandom() {
-
-  return Math.round(Math.random() * 255);
-};
+function getRandom(min, max) {
+  var min = 0;
+  var max = 100;
+  return Math.round(Math.random() * (max - min) + min);
+}
 
 function getRandomColor() {
-  var color = 'rgba(0, 0, ' + getRandom()+ ', 1)';
+  var color = 'hsl(240,' + getRandom() + '%,25%)';
 
   return color;
-};
+}
 
 var renderCloudHead = function (ctx) {
   ctx.fillStyle = '#000';
@@ -71,7 +72,7 @@ window.renderStatistics = function (ctx, players, times) {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
       ctx.fillStyle = getRandomColor();
-    };
+    }
 
     ctx.fillRect(barX, barY, BAR_WIDTH, BAR_HEIGHT - GAP * 2);
   });
