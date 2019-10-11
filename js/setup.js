@@ -54,12 +54,12 @@ var WIZARD_NAMES = [];
 
 for (var i = 0; i < 4; i++) {
   var value = generateWizard();
-  WIZARD_NAMES[i] = value;
+  WIZARD_NAMES.push(value);
 }
 
-WIZARD_NAMES.forEach(function (player) {
+WIZARD_NAMES.forEach(function (wizard) {
   var wizardElement = wizardItem.cloneNode(true);
-  wizardElement.querySelector('.setup-similar-label').textContent = player;
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard;
   wizardElement.querySelector('.wizard-coat').style.fill = window.utils.getRandomElement(coatColor);
   wizardElement.querySelector('.wizard-eyes').style.fill = window.utils.getRandomElement(eyesColor);
   similarListElement.appendChild(wizardElement);
