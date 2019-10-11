@@ -44,6 +44,30 @@ var coatColor = [
 
 var eyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
 
+var wizards = [
+  {
+    name: generateWizard(),
+    coatColor: window.utils.getRandomElement(coatColor),
+    eyesColor: window.utils.getRandomElement(eyesColor)
+  },
+
+  {
+    name: generateWizard(),
+    coatColor: window.utils.getRandomElement(coatColor),
+    eyesColor: window.utils.getRandomElement(eyesColor)
+  },
+  {
+    name: generateWizard(),
+    coatColor: window.utils.getRandomElement(coatColor),
+    eyesColor: window.utils.getRandomElement(eyesColor)
+  },
+  {
+    name: generateWizard(),
+    coatColor: window.utils.getRandomElement(coatColor),
+    eyesColor: window.utils.getRandomElement(eyesColor)
+  }
+];
+
 function generateWizard() {
   return (
     window.utils.getRandomElement(names) + ' ' + window.utils.getRandomElement(surnames)
@@ -53,8 +77,7 @@ function generateWizard() {
 var WIZARD_NAMES = [];
 
 for (var i = 0; i < 4; i++) {
-  var value = generateWizard();
-  WIZARD_NAMES.push(value);
+  WIZARD_NAMES.push(wizards[i].name);
 }
 
 WIZARD_NAMES.forEach(function (wizard) {
