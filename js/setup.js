@@ -49,22 +49,6 @@ var wizards = [
     name: generateWizard(),
     coatColor: window.utils.getRandomElement(coatColor),
     eyesColor: window.utils.getRandomElement(eyesColor)
-  },
-
-  {
-    name: generateWizard(),
-    coatColor: window.utils.getRandomElement(coatColor),
-    eyesColor: window.utils.getRandomElement(eyesColor)
-  },
-  {
-    name: generateWizard(),
-    coatColor: window.utils.getRandomElement(coatColor),
-    eyesColor: window.utils.getRandomElement(eyesColor)
-  },
-  {
-    name: generateWizard(),
-    coatColor: window.utils.getRandomElement(coatColor),
-    eyesColor: window.utils.getRandomElement(eyesColor)
   }
 ];
 
@@ -77,12 +61,12 @@ function generateWizard() {
 var WIZARD_NAMES = [];
 
 for (var i = 0; i < 4; i++) {
-  WIZARD_NAMES.push(wizards[i].name);
+  WIZARD_NAMES.push(wizards[i]);
 }
 
-WIZARD_NAMES.forEach(function (wizard) {
+WIZARD_NAMES.forEach(function () {
   var wizardElement = wizardItem.cloneNode(true);
-  wizardElement.querySelector('.setup-similar-label').textContent = wizard;
+  wizardElement.querySelector('.setup-similar-label').textContent = generateWizard();
   wizardElement.querySelector('.wizard-coat').style.fill = window.utils.getRandomElement(coatColor);
   wizardElement.querySelector('.wizard-eyes').style.fill = window.utils.getRandomElement(eyesColor);
   similarListElement.appendChild(wizardElement);
